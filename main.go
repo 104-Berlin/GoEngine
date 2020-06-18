@@ -40,11 +40,16 @@ func main() {
 	gl.GenBuffers(1, &vBuff)
 	gl.BindBuffer(gl.ARRAY_BUFFER, vBuff)
 
-	gl.BufferData(gl.ARRAY_BUFFER, len(verts)*4, verts, gl.STATIC_DRAW)
+	gl.BufferData(gl.ARRAY_BUFFER, len(verts)*4, gl.Ptr(verts), gl.STATIC_DRAW)
+
+	gl.EnableVertexAttribArray(0)
+	gl.VertexAttribPointer(0, 2, gl.FLOAT, false, 0, nil)
 
 	gl.ClearColor(1, 1, 1, 1)
 	for !window.ShouldClose() {
 		gl.Clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+
+		gl.DrawArrays(gl.TRIANGLES, 0, 3)
 
 		window.SwapBuffers()
 		glfw.PollEvents()
