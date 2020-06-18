@@ -45,7 +45,7 @@ func main() {
 	gl.EnableVertexAttribArray(0)
 	gl.VertexAttribPointer(0, 2, gl.FLOAT, false, 0, nil)
 
-	gl.ClearColor(1, 1, 1, 1)
+	gl.ClearColor(0, 0, 0, 1)
 	for !window.ShouldClose() {
 		gl.Clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
 
