@@ -30,6 +30,18 @@ func main() {
 		panic(glErr)
 	}
 
+	verts := []float32{
+		-0.5, -0.5,
+		0.0, 0.5,
+		0.5, -0.5}
+
+	//Test gl
+	var vBuff uint32
+	gl.GenBuffers(1, &vBuff)
+	gl.BindBuffer(gl.ARRAY_BUFFER, vBuff)
+
+	gl.BufferData(gl.ARRAY_BUFFER, len(verts)*4, verts, gl.STATIC_DRAW)
+
 	gl.ClearColor(1, 1, 1, 1)
 	for !window.ShouldClose() {
 		gl.Clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
