@@ -33,7 +33,8 @@ func main() {
 	verts := []float32{
 		-0.5, -0.5,
 		0.0, 0.5,
-		0.5, -0.5}
+		0.5, -0.5,
+	}
 
 	//Test gl
 	var vBuff uint32
