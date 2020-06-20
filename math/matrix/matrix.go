@@ -35,7 +35,7 @@ func (m1 *Mat4) Mult(m2 *Mat4) (r Mat4) {
 	return
 }
 
-func (m *Mat4) Trans(v *vector.Vec3) (r vector.Vec3) {
+func (m *Mat4) Trans(v vector.Vec3) (r vector.Vec3) {
 	for i := 0; i < 3; i++ {
 		for j := 0; j < 3; j++ {
 			r[i] += m[i][j] * v[j]
