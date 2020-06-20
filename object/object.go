@@ -37,9 +37,8 @@ func Create(name string) Object {
 
 	return Object{
 		object: &object{
-			name:     name,
-			uuid:     currObjId,
-			children: make(map[ObjId]Object),
+			name: name,
+			uuid: currObjId,
 		},
 	}
 }
@@ -77,6 +76,10 @@ func (o Object) AddChild(c Object) error {
 		delete(c.parent.children, c.uuid)
 	}
 
+	if o.children == nil {
+		o.children = make(map[ObjId]Object)
+	}
+
 	c.parent = o
 	o.children[c.uuid] = c
 	return nil
@@ -87,7 +90,9 @@ func (o Object) Traverse(f func(Object)) {
 		return
 	}
 	f(o)
-	for _, c := range o.children {
-		c.Traverse(f)
+	if o.children != nil {
+		for _, c := range o.children {
+			c.Traverse(f)
+		}
 	}
 }
